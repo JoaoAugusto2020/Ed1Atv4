@@ -119,16 +119,16 @@ struct Lista {
 	//2)
 	void removerSegundo(){
 		if (n == 0 || n ==1) return;
-        //criei um nó
+        //criei um nÃ³
 		No* segundo;
 		
-		//ele recebe agora o próimo nó dps de início
+		//ele recebe agora o prÃ³imo nÃ³ dps de inÃ­cio
         segundo = inicio->prox;
         
-        //o prox dps do início agora é o prox do segundo número
+        //o prox dps do inÃ­cio agora Ã© o prox do segundo nÃºmero
         inicio->prox = segundo->prox;
         
-        //excluo o segundo nó dps do inicio
+        //excluo o segundo nÃ³ dps do inicio
 		delete(segundo);
         n--;
 	}
@@ -151,13 +151,13 @@ struct Lista {
 		No* novo = new No(valor);
         No* aux = inicio;
         
-        //procurando o penultimo (aux é o penultimo nó)
+        //procurando o penultimo (aux Ã© o penultimo nÃ³)
         while (aux->prox != fim) {
             aux = aux->prox;
         }
         
-        //prox do penultimo agora é o novo nó
-        //novo nó aponta para o fim
+        //prox do penultimo agora Ã© o novo nÃ³
+        //novo nÃ³ aponta para o fim
         aux->prox = novo;
         novo->prox = fim;
         n++;
