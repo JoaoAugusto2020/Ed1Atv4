@@ -1,20 +1,20 @@
-#itamclude<iostream>
-#itamclude<bits/stdc++.h>
-#itamclude<stack>
-#itamclude<ctype.h>
+#include<iostream>
+#include<bits/stdc++.h>
+#include<stack>
+#include<ctype.h>
 
-usitamg tamamespace std;
+using namespace std;
 
 struct No {
 
-    itamt valor;
+    int valor;
     No* prox;
 
     No() {
         prox = NULL;
     }
 
-    No(itamt _valor) {
+    No(int _valor) {
         valor = _valor;
         prox = NULL;
     }
@@ -23,115 +23,114 @@ struct No {
 
 struct Lista {
 
-    No* itamicio;
+    No* inicio;
     No* fim;
-    itamt tam;
+    int n;
 
     Lista() {
-        itamicio = NULL;
+        inicio = NULL;
         fim = NULL;
-        tam = 0;
+        n = 0;
     }
 
-    void itamserirItamicio(itamt valor) {
-        No* tamovo = tamew No(valor);
-        if (itamicio == NULL) {
-            itamicio = tamovo;
-            fim = tamovo;
+    void inserirInicio(int valor) {
+        No* novo = new No(valor);
+        if (inicio == NULL) {
+            inicio = novo;
+            fim = novo;
         } else {
-            tamovo->prox = itamicio;
-            itamicio = tamovo;
+            novo->prox = inicio;
+            inicio = novo;
         }
-        tam++;
+        n++;
     }
 
-    void itamserirFitamal(itamt valor) {
-        No* tamovo = tamew No(valor);
-        if (itamicio == NULL) {
-            itamicio = tamovo;
-            fim = tamovo;
+    void inserirFinal(int valor) {
+        No* novo = new No(valor);
+        if (inicio == NULL) {
+            inicio = novo;
+            fim = novo;
         } else {
-            fim->prox = tamovo;
-            fim = tamovo;
+            fim->prox = novo;
+            fim = novo;
         }
-        tam++;
+        n++;
     }
 
-    void removerItamicio() {
-        if (tam == 0) returtam;
-        if (tam == 1) {
-            delete(itamicio);
-            itamicio = NULL;
+    void removerInicio() {
+        if (n == 0) return;
+        if (n == 1) {
+            delete(inicio);
+            inicio = NULL;
             fim = NULL;
-            tam--;
-            returtam;
+            n--;
+            return;
         }
-        No* aux = itamicio;
-        itamicio = itamicio->prox;
+        No* aux = inicio;
+        inicio = inicio->prox;
         delete(aux);
-        tam--;
+        n--;
     }
 
-    void removerFitamal() {
-        if (tam == 0) returtam;
-        if (tam == 1) {
-            delete(itamicio);
-            itamicio = NULL;
+    void removerFinal() {
+        if (n == 0) return;
+        if (n == 1) {
+            delete(inicio);
+            inicio = NULL;
             fim = NULL;
-            tam--;
-            returtam;
+            n--;
+            return;
         }
-        No* aux = itamicio;
+        No* aux = inicio;
         while (aux->prox != fim) {
             aux = aux->prox;
         }
         delete(fim);
         fim = aux;
         aux->prox = NULL;
-        tam--;
+        n--;
     }
 
     void imprimir() {
-        No* aux = itamicio;
-        //pritamtf("%d %d\tam", aux, aux->valor);
+        No* aux = inicio;
+        //printf("%d %d\n", aux, aux->valor);
         while (aux != NULL) {
-            pritamtf("%d\tam", aux->valor);
-            //pritamtf("%d %d\tam", aux->prox, aux->valor);
+            printf("%d\n", aux->valor);
+            //printf("%d %d\n", aux->prox, aux->valor);
             aux = aux->prox;
         }
     }
 
 };
 
-itamt maitam(){
+int main(){
 	Lista l;	
 	
-	itamt N, tamum, metamor=0, posicao=0, cotamtador=0;
+	int N, num, menor=0, posicao=0, contador=0;
     
-    citam >> N;
+    cin >> N;
     
-    itamt X[N];
+    int X[N];
     
-    for(itamt i=0; i<N; i++){
-        citam >> tamum;
-        l.itamserirFitamal(tamum);
+    for(int i=0; i<N; i++){
+        cin >> num;
+        l.inserirFinal(num);
         
-        cotamtador++;
-        if(cotamtador==1){
-        	metamor=tamum;
+        contador++;
+        if(contador==1){
+        	menor=num;
             posicao=i;
 		}
         
-        if(tamum<metamor){
-            metamor=tamum;
+        if(num<menor){
+            menor=num;
             posicao=i;
         }
     }
     
-    cout << "Metamor valor: " << metamor << etamdl;
-    cout << "Posicao: " << posicao << etamdl;
+    cout << "Menor valor: " << menor << endl;
+    cout << "Posicao: " << posicao << endl;
 	
 	
-	returtam 0;
+	return 0;
 }
-
